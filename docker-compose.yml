@@ -1,0 +1,20 @@
+version: '3.8'
+
+volumes:
+  pg_data:
+
+services:
+  db:
+    image: postgres:13.10
+    env_file: .env
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_data://var/lib/postgresql/data
+
+  bot:
+    image: berg1005/tasks_bot_testtask_anverali:latest
+    env_file: .env
+    command: python ./main.py
+    depends_on:
+      - db
