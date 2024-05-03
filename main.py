@@ -79,6 +79,7 @@ async def command_add_task_handler(
             'Вы не ввели текст задания.\n'
             'Пример: "/add Написать бота"'
         )
+        return
     await add_task(user_id, task)
     await message.answer('Задание успешно добавлено!')
 
